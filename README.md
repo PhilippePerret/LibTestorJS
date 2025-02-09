@@ -38,13 +38,13 @@ window[LIBRARY_NAME] = TESTED_LIBRARY
 
 window[LIBRARY_NAME].ctest() = function() {
   sessionStorage.setItem("LIST_TESTOR_LIBRARY_NAME", LIBRARY_NAME)
-  DGet('script#libTestorScript').enable()
+  run_lib_testor()
   /* === ICI LES TESTS === */
 
   assert(2+2 == 4, "Une addition fait le travail")
 
   /* === FIN DES TESTS === */
-  DGet('script#libTestorScript').disable()
+  stop_lib_testor()
 }
 
 ```

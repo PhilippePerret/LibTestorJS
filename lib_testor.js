@@ -174,7 +174,6 @@ function run_lib_testor(libraryClasse){
         window.get        = function(selector){return DGet(selector)}
         window.add        = function(element){document.body.appendChild(element)}
 
-
         // console.info("LibName = ", LibName)
         if ( libraryClasse ) {
           const LibName = libraryClasse.name
@@ -197,7 +196,10 @@ function run_lib_testor(libraryClasse){
 
 window.stop_lib_testor = function(){
 
-        throw new Error("Défaire tout ce que run_lib_testor() a fait.")
+  [
+    'only_tested', 'log', 'clear', 'vide', 't', 'body', 'asser', 'equal', 'raise', 'not_raise', 'stringify','err','info','get','add'
+  ].forEach(methode => { window[methode] = null; delete window[methode] })
+
 }
 
 

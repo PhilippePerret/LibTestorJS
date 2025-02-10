@@ -187,18 +187,18 @@ function run_lib_testor(libraryClasse){
             log('%c'+"La librairie DOM est opérationnelle (les %s tests sont passés avec succès)", "background-color:#CCFFCC;color:green", testCount)
           }
 
+          /* 
+            On supprime toutes les méthodes pour ne pas polluer l'application
+            QUESTION : Ne faudrait-il pas laisser la possibilité de garder ces
+            méthodes ?
+           */
+          [
+            'only_tested', 'log', 'clear', 'vide', 't', 'body', 'asser', 'equal', 'raise', 'not_raise', 'stringify','err','info','get','add'
+          ].forEach(methode => { window[methode] = null; delete window[methode] })
+        
         } else {
           console.error("La librairie qui charge LibTestor doit envoyer sa classe principale (celle appelant ctest()) en premier argument de run_lib_testor().")
         }
-
-}
-
-
-window.stop_lib_testor = function(){
-
-  [
-    'only_tested', 'log', 'clear', 'vide', 't', 'body', 'asser', 'equal', 'raise', 'not_raise', 'stringify','err','info','get','add'
-  ].forEach(methode => { window[methode] = null; delete window[methode] })
 
 }
 

@@ -63,6 +63,7 @@
  * seront passé.
  */
 
+
 class LibTestor {
   // Return TRUE s'il NE faut PAS jouer le test
   static notRunThisTest(options){
@@ -80,8 +81,15 @@ class LibTestor {
   }
   static set only_tested(v){this._only_tested = v}
 }
+LibTestor.ERRORS = {
+  should_transmit_class: "Library should transmit library Class as a first argument of active_lib_testor() to be tested with LibTestor."
+}
 
-function run_lib_testor(libraryClasse){
+function active_lib_testor(LibraryClasse){
+
+        if ( 'undefined' == typeof LibraryClasse ) {
+          throw new Error(LibTestor.ERRORS.should_transmit_class)
+        }
 
         // --- Options ---
 
@@ -175,11 +183,11 @@ function run_lib_testor(libraryClasse){
         window.add        = function(element){document.body.appendChild(element)}
 
         // console.info("LibName = ", LibName)
-        if ( libraryClasse ) {
-          const LibName = libraryClasse.name
+        if ( LibraryClasse ) {
+          const LibName = LibraryClasse.name
           t(`=== TEST DE LA LIBRAIRIE ${LibName} ===`)
           clear()
-          libraryClasse.ctest()
+          LibraryClasse.ctest()
           t(`=== FIN DU TEST DE LA LIBRAIRIE ${LibName} ===`)
           if ( failureCount > 0 ) {
             log('%c'+"Success:%s - Failures:%s - Tests:%s\n(consulter la console)", "padding:0.3em;line-height:1.3em;background-color:#FFCCCC;color:red;font-family:Monospace,Courrier New;font-size:1.2em;", successCount, failureCount, testCount)

@@ -50,7 +50,7 @@ const LIBRARY_NAME = "MaLib" // <======= DÉFINIR ÇA
 const TESTED_LIBRARY = eval(LIBRARY_NAME)
 window[LIBRARY_NAME] = TESTED_LIBRARY
 window[LIBRARY_NAME].ctest() = function() {
-  run_lib_testor(TESTED_LIBRARY)
+  active_lib_testor(TESTED_LIBRARY)
 
   /* === DÉBUT DES TESTS === */
 

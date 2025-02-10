@@ -56,8 +56,6 @@ window[LIBRARY_NAME].ctest() = function() {
 
   assert(2+2 == 4, "Une addition fait le travail")
 
-  /* === FIN DES TESTS === */
-  stop_lib_testor()
 }
 
 ```

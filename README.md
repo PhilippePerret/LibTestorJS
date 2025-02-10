@@ -10,7 +10,7 @@
 ### Distance avec connexion internet
 
 ```
-<script type="module" disabled id="libTestorScript" src="https://cdn.jsdelivr.net/gh/PhilippePerret/LibTestorJS@main/lib_testor.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/PhilippePerret/LibTestorJS@main/lib_testor.js"></script>
 ```
 
 Noter que le script [doit être activé](#activer-script)

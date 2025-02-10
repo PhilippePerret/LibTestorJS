@@ -81,7 +81,7 @@ class LibTestor {
   static set only_tested(v){this._only_tested = v}
 }
 
-function run_lib_testor(){
+function run_lib_testor(libraryClasse){
 
         // --- Options ---
 
@@ -175,13 +175,12 @@ function run_lib_testor(){
         window.add        = function(element){document.body.appendChild(element)}
 
 
-
-        const LibName = sessionStorage.getItem("LIST_TESTOR_LIBRARY_NAME")
         // console.info("LibName = ", LibName)
-        if ( LibName ) {
+        if ( libraryClasse ) {
+          const LibName = libraryClasse.name
           t(`=== TEST DE LA LIBRAIRIE ${LibName} ===`)
           clear()
-          eval(LibName).ctest(true)
+          libraryClasse.ctest()
           t(`=== FIN DU TEST DE LA LIBRAIRIE ${LibName} ===`)
           if ( failureCount > 0 ) {
             log('%c'+"Success:%s - Failures:%s - Tests:%s\n(consulter la console)", "padding:0.3em;line-height:1.3em;background-color:#FFCCCC;color:red;font-family:Monospace,Courrier New;font-size:1.2em;", successCount, failureCount, testCount)
@@ -190,7 +189,7 @@ function run_lib_testor(){
           }
 
         } else {
-          console.error("La librairie qui charge LibTestor doit définir la propriété session LIST_TESTOR_LIBRARY_NAME en y mettant le nom string de la classe ou de l'objet (celui mis dans <objet>.ctest(loaded).")
+          console.error("La librairie qui charge LibTestor doit envoyer sa classe principale (celle appelant ctest()) en premier argument de run_lib_testor().")
         }
 
 }
